@@ -12,7 +12,11 @@ import { WalkthroughPage } from '../pages/walkthrough/walkthrough'
   declarations: [
     MyApp,
     HomePage,
-    WalkthroughPage
+    WalkthroughPage,
+    HomePage,
+    CategoryPage,
+    ItemPage,
+    CartPage
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,11 @@ import { WalkthroughPage } from '../pages/walkthrough/walkthrough'
   entryComponents: [
     MyApp,
     HomePage,
-    WalkthroughPage
+    WalkthroughPage,
+    HomePage,
+    CategoryPage,
+    ItemPage,
+    CartPage
   ],
   providers: [
     StatusBar,
