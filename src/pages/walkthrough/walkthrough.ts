@@ -1,8 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Slides, NavController } from 'ionic-angular';
-
-import {HomePage} from '../home/home';
-import {AuthPage} from '../auth/auth';
+import { AuthPage } from '../auth/auth';
 
 
 @Component({

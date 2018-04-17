@@ -1,3 +1,6 @@
+ion-title {
+    text-align: center;
+}
 page-auth,
 .auth {
   .grid {
@@ -7,12 +10,8 @@ page-auth,
     }
   }
 .confirm-login {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
-ion-title {
-    text-align: center;
-}
-confirm-login
   .btn-group {
     .button-ios,
     .button-md {
