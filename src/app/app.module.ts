@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { WalkthroughPage } from '../pages/walkthrough/walkthrough'
+import { AuthPage } from '../pages/auth/auth'
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { WalkthroughPage } from '../pages/walkthrough/walkthrough'
     HomePage,
     WalkthroughPage,
     HomePage,
+    AuthPage,
     //CategoryPage,
     //ItemPage,
     //CartPage
@@ -28,6 +30,7 @@ import { WalkthroughPage } from '../pages/walkthrough/walkthrough'
     HomePage,
     WalkthroughPage,
     HomePage,
+    AuthPage,
     //CategoryPage,
     //ItemPage,
     //CartPage

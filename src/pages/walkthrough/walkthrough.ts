@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { Slides, NavController } from 'ionic-angular';
 
 import {HomePage} from '../home/home';
+import {AuthPage} from '../auth/auth';
+
 
 @Component({
   selector: 'page-walkthrough',
@@ -28,7 +30,7 @@ export class WalkthroughPage {
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque maximus, dui accumsan cursus lacinia, nisl risus.",
       image: "../../assets/imgs/logoy.png",
     }
-    
+
   ];
 
   constructor(public navCtrl: NavController) {
@@ -47,7 +49,7 @@ export class WalkthroughPage {
   }
 
   openHomePage() {
-  	this.navCtrl.setRoot(HomePage);
+  	this.navCtrl.setRoot(AuthPage);
   }
 
 
