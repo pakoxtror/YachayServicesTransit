@@ -10,12 +10,12 @@
 			          <button ion-button color="light" (click)="onLastSlide()">Skip</button>
 			        </ion-buttons>
 			      </ion-toolbar>
-			      <img [src]="slide.image" class="slide-image">
+			      <img [src]= "slide.image" class="slide-image">
 			      <h2 class="slide-title text-white" [innerHTML]="slide.title"></h2>
 			      <p [innerHTML]="slide.description" class="text-white"></p>
 
 						<div padding>
-				      <button ion-button round block color="secondary" margin-top icon-end (click)="onSlideNext()">
+				      <button ion-button round block color="secondary" (click)="onSlideNext()" class="slide-button" >
 				      	Next
 				      	<ion-icon name="arrow-round-forward" color="light"></ion-icon>
 				    	</button>
@@ -24,10 +24,11 @@
 			    <ion-slide>
 			      <ion-toolbar>
 			      </ion-toolbar>
-			      <img src="assets/img/Yachay_Tech_Logo.png" class="slide-image" margin-top>
-			      <h2 class="slide-title text-white">Ready!</h2>
+			      <img src="../../assets/imgs/logoy.png" class="slide-image" margin-top>
+						<h2 class="slide-title text-white">Ready!</h2>
+						<p class="text-white"></p>
 			      <div padding>
-			        <button ion-button block round color="dark" margin-top (click)="openHomePage()">
+			        <button ion-button block round color="dark" (click)="openHomePage()" class="slide-button">
 			          Get Started
 			        </button>
 			      </div>

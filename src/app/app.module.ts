@@ -14,9 +14,9 @@ import { WalkthroughPage } from '../pages/walkthrough/walkthrough'
     HomePage,
     WalkthroughPage,
     HomePage,
-    CategoryPage,
-    ItemPage,
-    CartPage
+    //CategoryPage,
+    //ItemPage,
+    //CartPage
   ],
   imports: [
     BrowserModule,
@@ -28,9 +28,9 @@ import { WalkthroughPage } from '../pages/walkthrough/walkthrough'
     HomePage,
     WalkthroughPage,
     HomePage,
-    CategoryPage,
-    ItemPage,
-    CartPage
+    //CategoryPage,
+    //ItemPage,
+    //CartPage
   ],
   providers: [
     StatusBar,

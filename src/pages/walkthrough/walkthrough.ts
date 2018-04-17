@@ -14,20 +14,21 @@ export class WalkthroughPage {
 
   slideList: Array<any> = [
     {
-      title: "What is <strong>Yachay</strong>Services?",
+      title: "What is <strong>Yachay</strong> Services?",
       description: "This app was made for all your needs in Yachay Tech!",
-      image: "assets/img/Yachay_Tech_Logo.png",
+      image: "../../assets/imgs/logoy.png",
     },
     {
       title: "Why Yachay Services?",
       description: "To make buying and selling easier and faster!",
-      image: "assets/img/Yachay_Tech_Logo.png",
+      image: "../../assets/imgs/logoy.png",
     },
     {
       title: "Your delicious dish is coming!",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque maximus, dui accumsan cursus lacinia, nisl risus.",
-      image: "assets/img/Yachay_Tech_Logo.png",
+      image: "../../assets/imgs/logoy.png",
     }
+    
   ];
 
   constructor(public navCtrl: NavController) {
