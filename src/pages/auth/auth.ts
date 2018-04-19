@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {NavController, AlertController, ToastController, MenuController} from "ionic-angular";
 
-import {HomePage} from "../home/home";
+import {CategoryPage} from "../category/category";
 // import {RegisterPage} from "../register/register";
 
 @Component({
@@ -31,7 +31,7 @@ export class AuthPage implements OnInit {
     this.onRegisterForm = this._fb.group({
       fullName: ['', Validators.compose([
         Validators.required
-      ])],      
+      ])],
       email: ['', Validators.compose([
         Validators.required
       ])],
@@ -48,7 +48,7 @@ export class AuthPage implements OnInit {
 
   // login and go to home page
   login() {
-    this.nav.setRoot(HomePage);
+    this.nav.setRoot(CategoryPage);
   }
 
   forgotPass() {

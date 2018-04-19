@@ -6,8 +6,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { WalkthroughPage } from '../pages/walkthrough/walkthrough'
-import { AuthPage } from '../pages/auth/auth'
+import { WalkthroughPage } from '../pages/walkthrough/walkthrough';
+import { AuthPage } from '../pages/auth/auth';
+import { CategoryPage } from '../pages/category/category';
+import {CategoryService} from '../providers/category-service-mock';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -16,13 +20,15 @@ import { AuthPage } from '../pages/auth/auth'
     WalkthroughPage,
     HomePage,
     AuthPage,
+    CategoryPage
     //CategoryPage,
     //ItemPage,
     //CartPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpClientModule,
+    IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -31,6 +37,7 @@ import { AuthPage } from '../pages/auth/auth'
     WalkthroughPage,
     HomePage,
     AuthPage,
+    CategoryPage
     //CategoryPage,
     //ItemPage,
     //CartPage
@@ -38,6 +45,7 @@ import { AuthPage } from '../pages/auth/auth'
   providers: [
     StatusBar,
     SplashScreen,
+    CategoryService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
