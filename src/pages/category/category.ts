@@ -8,7 +8,7 @@ import {CategoryService} from '../../providers/category-service-mock';
 })
 export class CategoryPage {
 
-  categories: any[] = [];
+  categories: any = [];
 
   constructor(
     public navCtrl: NavController,
@@ -19,7 +19,7 @@ export class CategoryPage {
     this.categoryService.getUsers()
     .subscribe(
       (data) => { // Success
-        this.categories = data['0'];
+        this.categories = data;
       },
       (error) =>{
         console.error(error);
