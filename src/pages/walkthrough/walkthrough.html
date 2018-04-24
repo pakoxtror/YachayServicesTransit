@@ -12,29 +12,27 @@
 			      </ion-toolbar>
 			      <img [src]= "slide.image" class="slide-image">
 			      <h2 class="slide-title text-white" [innerHTML]="slide.title"></h2>
-			      <p [innerHTML]="slide.description" class="text-white"></p>
+			      <p [innerHTML]="slide.description" class="text-gray"></p>
 
-						<div padding>
+						<footer padding>
 				      <button ion-button round block color="secondary" (click)="onSlideNext()" class="slide-button" >
-				      	Next
+				      	Siguiente
 				      	<ion-icon name="arrow-round-forward" color="light"></ion-icon>
 				    	</button>
-			    	</div>
+			    	</footer>
 			    </ion-slide>
 			    <ion-slide>
-			      <ion-toolbar>
-			      </ion-toolbar>
-			      <img src="../../assets/imgs/logoy.png" class="slide-image" margin-top>
-						<h2 class="slide-title text-white">Ready!</h2>
-						<p class="text-white"></p>
-			      <div padding>
-			        <button ion-button block round color="dark" (click)="openHomePage()" class="slide-button">
-			          Get Started
+			      <img src="../../assets/imgs/pizza.png" class="slide-image2" margin-top>
+						<h2 class="slide-title text-white">Ya tienes todo lo que nesecitas \n Disfruta!</h2>
+			      <footer padding>
+			        <button left ion-button block round color="dark" (click)="openHomePage()" >
+			          Empecemos
 			        </button>
-			      </div>
+			      </footer>
 			    </ion-slide>
 			  </ion-slides>
 			</ion-col>
 		</ion-row>
 	</ion-grid>
 </ion-content>
+<!-- falta ver si footer esta bien usado -->

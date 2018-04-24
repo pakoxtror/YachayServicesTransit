@@ -14,19 +14,19 @@ export class WalkthroughPage {
 
   slideList: Array<any> = [
     {
-      title: "What is <strong>Yachay</strong> Services?",
-      description: "This app was made for all your needs in Yachay Tech!",
-      image: "../../assets/imgs/logoy.png",
+      title: "¿Que es <strong>Yachay</strong>Services?",
+      description: "Una aplicación desarrollada para facilitar la adquisición y venta de productos dentro de nuestra universidad.",
+      image: "../../assets/imgs/pera.png",
     },
     {
-      title: "Why Yachay Services?",
-      description: "To make buying and selling easier and faster!",
-      image: "../../assets/imgs/logoy.png",
+      title: "¿Porque comprar con <strong>Yachay</strong>Services?",
+      description: "Visualiza de manera más fácil los productos, genera un carrito de compras, realiza tu compra y mantente al tanto de el estado de entrega.",
+      image: "../../assets/imgs/fresa.png",
     },
     {
-      title: "Your delicious dish is coming!",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque maximus, dui accumsan cursus lacinia, nisl risus.",
-      image: "../../assets/imgs/logoy.png",
+      title: "¿Porque vender con <strong>Yachay</strong>Services?",
+      description: "Facilidad a la hora de ofertar un producto, también facilita su entrega atraves de una lista de entrega ordenada para el vendedor.",
+      image: "../../assets/imgs/uva.png",
     }
 
   ];
