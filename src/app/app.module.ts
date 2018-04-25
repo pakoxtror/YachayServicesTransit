@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -11,6 +12,9 @@ import { AuthPage } from '../pages/auth/auth';
 import { CategoryPage } from '../pages/category/category';
 import {CategoryService} from '../providers/category-service-mock';
 import { HttpClientModule } from '@angular/common/http';
+import { CartPage } from '../pages/cart/cart';
+import { AddproductPage} from '../pages/addproduct/addproduct';
+import { InformationPage} from '../pages/information/information';
 
 
 @NgModule({
@@ -20,10 +24,10 @@ import { HttpClientModule } from '@angular/common/http';
     WalkthroughPage,
     HomePage,
     AuthPage,
-    CategoryPage
-    //CategoryPage,
-    //ItemPage,
-    //CartPage
+    AddproductPage,
+    CategoryPage,
+    InformationPage,
+    CartPage,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,10 @@ import { HttpClientModule } from '@angular/common/http';
     WalkthroughPage,
     HomePage,
     AuthPage,
-    CategoryPage
+    CategoryPage,
+    AddproductPage,
+    InformationPage,
+    CartPage,
     //CategoryPage,
     //ItemPage,
     //CartPage

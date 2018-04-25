@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {CategoryService} from '../../providers/category-service-mock';
+import { CategoryService } from '../../providers/category-service-mock';
+import { CartPage } from '../cart/cart';
+import { AddproductPage} from '../addproduct/addproduct';
+import { InformationPage} from '../information/information';
 
 @Component({
   selector: 'page-category',
@@ -25,5 +28,14 @@ export class CategoryPage {
         console.error(error);
       }
     )
+  }
+  openCartPage() {
+    this.navCtrl.setRoot(CartPage);
+  }
+  openAddProductPage() {
+    this.navCtrl.setRoot(AddproductPage);
+  }
+  openInformationPage() {
+    this.navCtrl.setRoot(InformationPage);
   }
 }
