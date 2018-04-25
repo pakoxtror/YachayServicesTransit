@@ -9,16 +9,17 @@
 
 </ion-header>
 
-<ion-content>
+<ion-content class = "card-background-page">
 
-	<div class="card-background-page">
 
-	  <ion-card *ngFor="let category of categories" tappable (click)="openRestaurantListPage(category.name)">
+
+	  <ion-card *ngFor="let category of categories" tappable (click)="openCategoryPage(category.name)">
       <!-- <img [src]="category.picture.medium" /> -->
+			<img src="../assets/imgs/{{category.image}}"/>
       <div class="card-title">{{category.name}}</div>
       <!-- <div class="card-subtitle">{{category.email}}</div> -->
 	  </ion-card>
-	</div>
+
 </ion-content>
 
 

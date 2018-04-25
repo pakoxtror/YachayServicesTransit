@@ -12,7 +12,7 @@ import { InformationPage} from '../information/information';
 export class CategoryPage {
 
   categories: any = [];
-
+  proptype: string;
   constructor(
     public navCtrl: NavController,
     public categoryService: CategoryService
@@ -37,5 +37,9 @@ export class CategoryPage {
   }
   openInformationPage() {
     this.navCtrl.push(InformationPage);
+  }
+  openCategoryPage(proptype) {
+    proptype = proptype + 'Page';
+  	this.navCtrl.push(proptype);
   }
 }
