@@ -23,9 +23,12 @@
 </ion-content>
 
 
-<!-- boton -->
-<ion-footer no-border >
-  <button  ion-button round color="secondary" button-right icon-right>
-  <ion-icon name="home" color="light"></ion-icon>
-  </button>
-</ion-footer>
+
+	<ion-fab bottom right>
+		<button ion-fab color="secondary" float-right>  <ion-icon name="list" color="light" style="font-size:30px"></ion-icon> </button>
+		<ion-fab-list side="top">
+      <button ion-fab (click)="openCartPage()"><ion-icon name="md-cart"></ion-icon></button>
+      <button ion-fab (click)="openAddProductPage()"><ion-icon name="md-add"></ion-icon></button>
+			 <button ion-fab (click)="openInformationPage()"><ion-icon name="information"></ion-icon></button>
+		</ion-fab-list>
+	</ion-fab>
