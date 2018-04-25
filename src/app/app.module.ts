@@ -13,6 +13,7 @@ import {CategoryService} from '../providers/category-service-mock';
 import { HttpClientModule } from '@angular/common/http';
 
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -20,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     WalkthroughPage,
     HomePage,
     AuthPage,
-    CategoryPage
+    CategoryPage,
     //CategoryPage,
     //ItemPage,
     //CartPage
@@ -37,7 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     WalkthroughPage,
     HomePage,
     AuthPage,
-    CategoryPage
+    CategoryPage,
     //CategoryPage,
     //ItemPage,
     //CartPage

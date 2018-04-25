@@ -9,7 +9,7 @@ import {CategoryService} from '../../providers/category-service-mock';
 export class CategoryPage {
 
   categories: any = [];
-
+  proptype: string;
   constructor(
     public navCtrl: NavController,
     public categoryService: CategoryService
@@ -25,5 +25,10 @@ export class CategoryPage {
         console.error(error);
       }
     )
+  }
+
+  openCategoryPage(proptype) {
+    proptype = proptype + 'Page';
+  	this.navCtrl.push(proptype);
   }
 }
