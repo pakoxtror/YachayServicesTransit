@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
+import { Http } from '@angular/http';
 
 /**
  * Generated class for the AddproductPage page.
@@ -13,12 +14,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'addproduct.html',
 })
 export class AddproductPage {
+  todo:any = {}
+  constructor(public navCtrl: NavController, public http: Http) {
+    this.todo.name = '';
+    this.todo.description = '';
+    this.todo.price= '';
+    this.todo.stock = '';
+    this.todo.response = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+  
+  logForm() {
+    console.log(this.todo)
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AddproductPage');
+  postProduct() {
+    var link = 'http://127.0.0.1:3000/api/v1/todos';
+        this.http.post(link, this.todo)
+        .subscribe(data => {
+        	this.todo.response = data["_body"]; 
+        }, error => {
+            console.log("Oooops!");
+        });
   }
-
 }
+
+  

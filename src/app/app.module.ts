@@ -15,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CartPage } from '../pages/cart/cart';
 import { AddproductPage} from '../pages/addproduct/addproduct';
 import { InformationPage} from '../pages/information/information';
-
+import { HttpModule} from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -33,6 +33,7 @@ import { InformationPage} from '../pages/information/information';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    HttpModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
