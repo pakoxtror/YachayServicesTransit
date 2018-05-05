@@ -1,4 +1,3 @@
-<!-- -->
 <ion-content padding class="profiles-bg">
 	<div class="auth-content">
 
@@ -67,10 +66,9 @@
 		          <ion-icon name="person" item-start class="text-white"></ion-icon>
 		          Full Name
 		        </ion-label>
-		        <ion-input type="text" formControlName="fullName"></ion-input>
+		        <ion-input type="text" formControlName="name"></ion-input>
 		      </ion-item>
 		      <p ion-text color="danger" class="text-12x has-error" *ngIf="onRegisterForm.get('fullName').touched && onRegisterForm.get('fullName').hasError('required')">This field is required</p>
-
 		      <ion-item>
 		        <ion-label floating>
 		          <ion-icon name="mail" item-start class="text-white"></ion-icon>
@@ -93,7 +91,7 @@
 					<ion-footer class="confirm-login" no-border>
 						<ion-toolbar color="white">
 							<ion-title>
-								<button ion-button block color="secondary" (click)="login()" [disabled]="!onRegisterForm.valid">
+								<button ion-button block color="secondary" (click)="register()" >
 					        REGISTRATE
 					      </button>
 							</ion-title>

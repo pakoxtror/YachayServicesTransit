@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
 import { Http } from '@angular/http';
+import {FormGroup, Validators, FormBuilder} from '@angular/forms';
+import {NavController, AlertController, ToastController, MenuController} from "ionic-angular";
+
 
 /**
  * Generated class for the AddproductPage page.
@@ -14,29 +16,56 @@ import { Http } from '@angular/http';
   templateUrl: 'addproduct.html',
 })
 export class AddproductPage {
+  number: number;
+  numberSettings: any = {
+      theme: 'ios',
+      display: 'bottom',
+      layout: 'fixed',
+      step: 1,
+      min: 10,
+      max: 150,
+      width: 150
+  };
   todo:any = {}
-  constructor(public navCtrl: NavController, public http: Http) {
-    this.todo.name = '';
-    this.todo.description = '';
-    this.todo.price= '';
-    this.todo.stock = '';
-    this.todo.response = '';
+  public onAddForm : FormGroup;
 
-  }
+  constructor(private _fb: FormBuilder, public nav: NavController, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController,  public http: Http) {
   
-  logForm() {
-    console.log(this.todo)
   }
 
+  ngOnInit() {
+    this.onAddForm = this._fb.group({
+      name: ['', Validators.compose([
+        Validators.required
+      ])],
+      description: ['', Validators.compose([
+        Validators.required
+      ])],
+      price: ['', Validators.compose([
+        Validators.required
+      ])],
+      stock: [ , Validators.compose([
+        Validators.required
+      ])],
+      delivery_date: ['', Validators.compose([
+        Validators.required
+      ])],
+      start_date: ['', Validators.compose([
+        Validators.required
+      ])],
+      category: ['', Validators.compose([
+        Validators.required
+      ])]
+    });
+  }
   postProduct() {
-    var link = 'http://127.0.0.1:3000/api/v1/todos';
-        this.http.post(link, this.todo)
+    console.log(this.onAddForm.value)
+    var link = 'http://127.0.0.1:3000/api/v1/product';
+        this.http.post(link, this.onAddForm.value)
         .subscribe(data => {
-        	this.todo.response = data["_body"]; 
+        	this.todo.response = data["_body"];
         }, error => {
             console.log("Oooops!");
         });
   }
 }
-
-  
