@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {NavController, AlertController, ToastController, MenuController} from "ionic-angular";
-import { Http, Response} from '@angular/http';
+import { Http} from '@angular/http';
 import {CategoryPage} from "../category/category";
 import {AuthProvider} from '../../providers/auth/auth';
 // import {RegisterPage} from "../register/register";
@@ -16,7 +16,8 @@ export class AuthPage implements OnInit {
 
   auth: string = "login";
   todo:any = {};
-  respuesta:any = {};
+  public respuesta:any = {};
+  public id_user: number ;
 
   constructor(public authprovider: AuthProvider, private _fb: FormBuilder, public nav: NavController, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController,  public http: Http) {
     this.menu.swipeEnable(false);
@@ -56,7 +57,9 @@ export class AuthPage implements OnInit {
         if (this.respuesta.length != 1){
           this.presentToast() 
         } else{
-          this.nav.setRoot(CategoryPage);
+          this.id_user = this.respuesta[0].id_user;
+          console.log(this.id_user);
+          this.nav.setRoot(CategoryPage,{id_user: this.id_user});
         }
         
   }
