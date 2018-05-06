@@ -1,8 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {NavController, AlertController, ToastController, MenuController} from "ionic-angular";
-import { Http } from '@angular/http';
+import { Http, Response} from '@angular/http';
 import {CategoryPage} from "../category/category";
+import {AuthProvider} from '../../providers/auth/auth';
 // import {RegisterPage} from "../register/register";
 
 @Component({
@@ -15,14 +16,15 @@ export class AuthPage implements OnInit {
 
   auth: string = "login";
   todo:any = {};
+  respuesta:any = {};
 
-  constructor(private _fb: FormBuilder, public nav: NavController, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController,  public http: Http) {
+  constructor(public authprovider: AuthProvider, private _fb: FormBuilder, public nav: NavController, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController,  public http: Http) {
     this.menu.swipeEnable(false);
   }
 
   ngOnInit() {
     this.onLoginForm = this._fb.group({
-      email: ['', Validators.compose([
+      user_name: ['', Validators.compose([
         Validators.required
       ])],
       password: ['', Validators.compose([
@@ -45,7 +47,18 @@ export class AuthPage implements OnInit {
 
   // login and go to home page
   login() {
-    this.nav.setRoot(CategoryPage);
+    this.authprovider.login(this.onLoginForm.value).then((result) => {
+      this.respuesta = result;
+    }, (err) => {
+      console.log("error no recibi nada");
+        })
+
+        if (this.respuesta.length != 1){
+          this.presentToast() 
+        } else{
+          this.nav.setRoot(CategoryPage);
+        }
+        
   }
 
 
@@ -60,4 +73,11 @@ export class AuthPage implements OnInit {
         });
   }
 
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Autentificación fallida',
+      duration: 3000
+    });
+    toast.present();
+  }
 }
