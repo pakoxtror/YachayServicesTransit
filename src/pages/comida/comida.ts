@@ -22,7 +22,7 @@ export class ComidaPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ComidaPage');
     this.categoryService.getComida()
-    .subscribe(
+    .then(
       (data) => { // Success
         this.comidaList=data;
         console.log(this.comidaList);

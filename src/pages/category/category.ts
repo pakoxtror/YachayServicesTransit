@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,NavParams } from 'ionic-angular';
 import { CategoryService } from '../../providers/category-service-mock';
 import { CartPage } from '../cart/cart';
 import { AddproductPage} from '../addproduct/addproduct';
@@ -15,11 +15,12 @@ export class CategoryPage {
   public numCat2 : number;
   public numCat3 : number;
   public numCat4 : number;
+  id_user : any;
   proptype: string;
-  constructor(
-    public navCtrl: NavController,
-    public categoryService: CategoryService
-  ) {}
+  constructor(public navCtrl: NavController,public categoryService: CategoryService,public navParams:NavParams) {
+    this.id_user = {id_user :this.navParams.get('id_user')};
+    console.log(this.id_user);
+  }
 
   ionViewDidLoad(){
     this.categoryService.getNumCat()
@@ -37,16 +38,16 @@ export class CategoryPage {
     )
   }
   openCartPage() {
-    this.navCtrl.push(CartPage);
+    this.navCtrl.push(CartPage,this.id_user);
   }
   openAddProductPage() {
-    this.navCtrl.push(AddproductPage);
+    this.navCtrl.push(AddproductPage,this.id_user);
   }
   openInformationPage() {
-    this.navCtrl.push(InformationPage);
+    this.navCtrl.push(InformationPage,this.id_user);
   }
   openCategoryPage(proptype) {
     proptype = proptype + 'Page';
-  	this.navCtrl.push(proptype);
+  	this.navCtrl.push(proptype,this.id_user);
   }
 }

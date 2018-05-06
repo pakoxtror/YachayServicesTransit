@@ -13,8 +13,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'cart.html',
 })
 export class CartPage {
-
+  id_user : number;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.id_user = this.navParams.get('id_user');
+    console.log(this.id_user);
   }
 
   ionViewDidLoad() {
