@@ -7,12 +7,47 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>comida</ion-title>
+    <ion-title>Comida</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-card *ngFor= "let comida of comidaList">
+    <ion-item>
+      <h2>{{comida.seller_fname}} {{comida.seller_lname}}</h2>
+      <p>{{comida.register_date}}</p>
+    </ion-item>
+    <img src="assets/imgs/todos.jpg">
+    <ion-card-content>
+      <p>{{comida.description}}</p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small (click)="gotoCart()">
+          <ion-icon name="add"></ion-icon>
+          <div>Añadir al carrito</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="basket"></ion-icon>
+          <div>Stock {{comida.stock}}</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="cash"></ion-icon>
+          <div>$ 5.00</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="calendar"></ion-icon>
+          <div>Fecha de Entrega</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>

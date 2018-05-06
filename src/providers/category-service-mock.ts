@@ -8,7 +8,10 @@ export class CategoryService {
     private http: HttpClient
   ) {}
 
-  getUsers() {
-    return this.http.get('http://localhost:3000/category');
+  getNumCat() {
+    return this.http.get('http://192.168.88.61:3000/api/v1/num_products');
+  }
+  getComida(){
+    return this.http.get('http://192.168.88.61:3000/api/v1/comida');
   }
 }
