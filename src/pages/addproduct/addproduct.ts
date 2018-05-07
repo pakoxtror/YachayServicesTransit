@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
-import {NavController, AlertController, ToastController, MenuController} from "ionic-angular";
+import {NavController, AlertController, ToastController, MenuController, NavParams} from "ionic-angular";
 
 
 /**
@@ -16,7 +16,7 @@ import {NavController, AlertController, ToastController, MenuController} from "i
   templateUrl: 'addproduct.html',
 })
 export class AddproductPage {
-  number: number;
+  id_user : number;
   numberSettings: any = {
       theme: 'ios',
       display: 'bottom',
@@ -29,8 +29,9 @@ export class AddproductPage {
   todo:any = {}
   public onAddForm : FormGroup;
 
-  constructor(private _fb: FormBuilder, public nav: NavController, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController,  public http: Http) {
-  
+  constructor(private _fb: FormBuilder, public nav: NavController, public navParams: NavParams, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController,  public http: Http) {
+    this.id_user = this.navParams.get('id_user');
+    console.log(this.id_user);
   }
 
   ngOnInit() {
@@ -55,12 +56,14 @@ export class AddproductPage {
       ])],
       category: ['', Validators.compose([
         Validators.required
-      ])]
+      ])],
+      id_user: [this.id_user]
     });
   }
   postProduct() {
-    console.log(this.onAddForm.value)
-    var link = 'http://192.168.88.61:3000/api/v1/product';
+    console.log(this.id_user);
+    console.log(this.onAddForm.value);
+    var link = 'http://127.0.0.1:3000/api/v1/product';
         this.http.post(link, this.onAddForm.value)
         .subscribe(data => {
         	this.todo.response = data["_body"];
