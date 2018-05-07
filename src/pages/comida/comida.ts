@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
 import { CartPage } from '../cart/cart';
 import { CategoryService } from '../../providers/category-service-mock'
 /**
@@ -16,7 +16,9 @@ import { CategoryService } from '../../providers/category-service-mock'
 })
 export class ComidaPage {
   public comidaList : any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public categoryService:CategoryService) {
+  id_user : number;
+  constructor(public toastCtrl : ToastController,public navCtrl: NavController, public navParams: NavParams,public categoryService:CategoryService) {
+    this.id_user = this.navParams.get('id_user');
   }
 
   ionViewDidLoad() {
@@ -32,7 +34,30 @@ export class ComidaPage {
       }
     )
   }
-  gotoCart(){
-    this.navCtrl.push(CartPage);
+  gotoCart(id_product:number){
+    this.categoryService.sendCart(this.id_user,id_product)
+    .then(
+      (data)=>{
+        this.presentToastExito();
+        console.log(data);
+      },
+      (error) =>{
+        this.presentToastFallido();
+      }
+    )
+  }
+  presentToastExito() {
+    let toast = this.toastCtrl.create({
+      message: 'Exito',
+      duration: 3000
+    });
+    toast.present();
+  }
+  presentToastFallido() {
+    let toast = this.toastCtrl.create({
+      message: 'Fail',
+      duration: 3000
+    });
+    toast.present();
   }
 }
