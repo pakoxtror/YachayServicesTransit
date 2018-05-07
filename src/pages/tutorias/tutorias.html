@@ -14,5 +14,48 @@
 
 
 <ion-content padding>
-
-</ion-content>
+    <ion-card *ngFor= "let tutoria of tutoriaList">
+      <ion-item>
+        <h2>{{tutoria.seller_fname}} {{tutoria.seller_lname}}</h2>
+        <p>{{tutoria.register_date}}</p>
+      </ion-item>
+      <img src="assets/imgs/todos.jpg">
+      <ion-card-content>
+        <p>{{tutoria.description}}</p>
+      </ion-card-content>
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small (click)="gotoCart(tutoria.id_product)">
+            <ion-icon name="add"></ion-icon>
+            <div>Añadir al carrito</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="basket"></ion-icon>
+            <div>Stock {{tutoria.stock}}</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="cash"></ion-icon>
+            <div>$ {{tutoria.precio_unitario}}</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="calendar"></ion-icon>
+            <div>Entrega: {{tutoria.delivery_date}}</div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-content>
+  <ion-fab bottom right>
+      <button ion-fab color="secondary" float-right>  <ion-icon name="list" color="light" style="font-size:30px"></ion-icon> </button>
+      <ion-fab-list side="top">
+        <button ion-fab (click)="openAddProductPage()"><ion-icon name="md-add"></ion-icon></button>
+        <button ion-fab (click)="openCartPage()"><ion-icon name="md-cart"></ion-icon></button>
+        <button ion-fab (click)="openInformationPage()"><ion-icon name="information"></ion-icon></button>
+      </ion-fab-list>
+    </ion-fab>

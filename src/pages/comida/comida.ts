@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
 import { CartPage } from '../cart/cart';
+import { AddproductPage } from '../addproduct/addproduct';
+import { InformationPage } from '../information/information';
 import { CategoryService } from '../../providers/category-service-mock'
+
 /**
  * Generated class for the ComidaPage page.
  *
@@ -23,7 +26,7 @@ export class ComidaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ComidaPage');
-    this.categoryService.getComida()
+    this.categoryService.getCategoryProducts("1")
     .then(
       (data) => { // Success
         this.comidaList=data;
@@ -46,6 +49,17 @@ export class ComidaPage {
       }
     )
   }
+
+  openCartPage() {
+    this.navCtrl.push(CartPage,{id_user:this.id_user});
+  }
+  openAddProductPage() {
+    this.navCtrl.push(AddproductPage,{id_user:this.id_user});
+  }
+  openInformationPage() {
+    this.navCtrl.push(InformationPage);
+  }
+
   presentToastExito() {
     let toast = this.toastCtrl.create({
       message: 'Exito',

@@ -22,15 +22,17 @@ export class CategoryPage {
     console.log(this.id_user);
   }
 
-  ionViewDidLoad(){
+  ionViewDidEnter(){
     this.categoryService.getNumCat()
     .subscribe(
       (data) => { // Success
+        console.log(data);
         this.numCat0 = data[0].num_prod;
         this.numCat1 = data[1].num_prod;
         this.numCat2 = data[2].num_prod;
         this.numCat3 = data[3].num_prod;
-        this.numCat4 = data[4].num_prod;
+        this.numCat4 = Number(this.numCat0)+Number(this.numCat1)+Number(this.numCat2)+Number(this.numCat3);
+        
       },
       (error) =>{
         console.error(error);

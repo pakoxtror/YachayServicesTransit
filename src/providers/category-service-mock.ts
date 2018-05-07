@@ -16,28 +16,6 @@ export class CategoryService {
   getNumCat() {
     return this.http.get(url+'/api/v1/num_products');
   }
-  getComida(){
-    this.loading= this.loadingController.create({
-      content : 'Cargando..'
-      //duration : 3000
-    });
-      this.loading.present();
-      return new Promise(resolve => {
-        this.http.get(url + '/api/v1/comida').subscribe(
-          data=>{
-            resolve(data)
-            this.loading.dismiss()
-          },err =>{
-            console.log(err);
-            if(!err.ok){
-              this.loading.dismiss();
-              this.showAlert();
-            }
-          }
-        )
-      })
-    //return this.http.get('url' + '/api/v1/comida');
-  }
   getCarrito(id_user: number){
     this.loading= this.loadingController.create({
       content : 'Cargando..'
@@ -59,7 +37,6 @@ export class CategoryService {
           }
         )
       })
-    //return this.http.get('url' + '/api/v1/comida');
   }
   sendCart(id_user: number,id_product : number){
     this.loading= this.loadingController.create({
@@ -82,9 +59,51 @@ export class CategoryService {
           }
         )
       })
-    //return this.http.get('url' + '/api/v1/comida');
   }
 
+  getCategoryProducts(id_category : string){
+    this.loading= this.loadingController.create({
+      content : 'Cargando..'
+      //duration : 3000
+    });
+      this.loading.present();
+      return new Promise(resolve => {
+        this.http.get(url + '/api/v1/category/'+id_category).subscribe(
+          data=>{
+            resolve(data)
+            this.loading.dismiss()
+          },err =>{
+            console.log(err);
+            if(!err.ok){
+              this.loading.dismiss();
+              this.showAlert();
+            }
+          }
+        )
+      })
+  }
+
+  getAllProducts(){
+    this.loading= this.loadingController.create({
+      content : 'Cargando..'
+      //duration : 3000
+    });
+      this.loading.present();
+      return new Promise(resolve => {
+        this.http.get(url + '/api/v1/todo').subscribe(
+          data=>{
+            resolve(data)
+            this.loading.dismiss()
+          },err =>{
+            console.log(err);
+            if(!err.ok){
+              this.loading.dismiss();
+              this.showAlert();
+            }
+          }
+        )
+      })
+  }
   showAlert() {
     let alert = this.alertCtrl.create({
       title: 'No Internet!',

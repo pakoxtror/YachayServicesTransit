@@ -7,12 +7,55 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>ocio</ion-title>
+    <ion-title>Ocio</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
-</ion-content>
+    <ion-card *ngFor= "let ocio of ocioList">
+      <ion-item>
+        <h2>{{ocio.seller_fname}} {{ocio.seller_lname}}</h2>
+        <p>{{ocio.register_date}}</p>
+      </ion-item>
+      <img src="assets/imgs/todos.jpg">
+      <ion-card-content>
+        <p>{{ocio.description}}</p>
+      </ion-card-content>
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small (click)="gotoCart(ocio.id_product)">
+            <ion-icon name="add"></ion-icon>
+            <div>Añadir al carrito</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="basket"></ion-icon>
+            <div>Stock {{ocio.stock}}</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="cash"></ion-icon>
+            <div>$ {{ocio.precio_unitario}}</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="calendar"></ion-icon>
+            <div>Entrega: {{ocio.delivery_date}}</div>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-content>
+  <ion-fab bottom right>
+      <button ion-fab color="secondary" float-right>  <ion-icon name="list" color="light" style="font-size:30px"></ion-icon> </button>
+      <ion-fab-list side="top">
+        <button ion-fab (click)="openAddProductPage()"><ion-icon name="md-add"></ion-icon></button>
+        <button ion-fab (click)="openCartPage()"><ion-icon name="md-cart"></ion-icon></button>
+        <button ion-fab (click)="openInformationPage()"><ion-icon name="information"></ion-icon></button>
+      </ion-fab-list>
+    </ion-fab>
