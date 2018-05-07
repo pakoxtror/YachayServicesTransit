@@ -4,32 +4,34 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header class= "text-white"  no-shadow no-border align-title="center" >
 
-    <ion-navbar>
-      <ion-title>Carrito</ion-title>
+    <ion-navbar transparent no-border align-title="center">
+      <ion-title align-title="center">Carrito de compras</ion-title>
     </ion-navbar>
   
   </ion-header>
   
   
-  <ion-content padding>
-    <ion-card *ngFor= "let carrito of carritoList">
+  <ion-content padding class="primary-bg">
+    <ion-card *ngFor= "let carrito of carritoList; let i = index">
       <ion-item>
-        <h2>{{carrito.name}}</h2>
+        <h2>{{this.toTitleCase(carrito.name)}}</h2><ion-avatar item-start>
+            <img src="assets/imgs/todos.jpg">
+        </ion-avatar>
       </ion-item>
-      <img src="assets/imgs/todos.jpg">
+      
       <ion-row>
         <ion-col>
-          <button ion-button icon-left clear small (click)="gotoCart()">
-            <ion-icon name="add"></ion-icon>
-          </button>
+            <button ion-button icon-left clear small>
+                <ion-icon name="cash"></ion-icon>
+                <div>$ {{carrito.precio_unitario}}</div>
+              </button>
         </ion-col>
         <ion-col>
-          <button ion-button icon-left clear small>
-            <ion-icon name="cash"></ion-icon>
-            <div>$ {{carrito.precio_unitario}}</div>
-          </button>
+            <button ion-button  small (click)="add(i)"> <ion-icon name="add"></ion-icon> </button>
+            <button ion-button  small (click)="remove(i)"> <ion-icon name="remove"></ion-icon> </button>
+            <button ion-button  small> {{cant(i)}} </button>
         </ion-col>
         <ion-col>
           <button ion-button icon-left clear small>
