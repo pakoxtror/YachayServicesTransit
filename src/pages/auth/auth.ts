@@ -67,7 +67,7 @@ export class AuthPage implements OnInit {
 
   register() {
     console.log(this.onRegisterForm.value)
-    var link = 'http://127.0.0.1:3000/api/v1/r';
+    var link = 'http://192.168.88.61:3000/api/v1/r';
         this.http.post(link, this.onRegisterForm.value)
         .subscribe(data => {
           this.todo = data["_body"];

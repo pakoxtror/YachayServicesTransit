@@ -63,7 +63,7 @@ export class AddproductPage {
   postProduct() {
     console.log(this.id_user);
     console.log(this.onAddForm.value);
-    var link = 'http://127.0.0.1:3000/api/v1/product';
+    var link = 'http://192.168.88.61:3000/api/v1/product';
         this.http.post(link, this.onAddForm.value)
         .subscribe(data => {
         	this.todo.response = data["_body"];
