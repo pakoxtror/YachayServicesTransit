@@ -93,7 +93,7 @@ export class CategoryService {
         this.http.get(url + '/api/v1/todo').subscribe(
           data=>{
             resolve(data)
-            this.loading.dismiss()
+            this.loading.dismiss();
           },err =>{
             console.log(err);
             if(!err.ok){
@@ -148,6 +148,21 @@ export class CategoryService {
         )
       })
   }
+
+  updateCart(result){
+    return new Promise(resolve => {
+      this.http.post(url + '/api/v1/g_carrito',result).subscribe(
+        data=>{
+          resolve(data)
+        },err =>{
+          console.log(err);
+          if(!err.ok){
+            this.showAlert();
+          }
+        }
+      )
+    })
+}
 
   showAlert() {
     let alert = this.alertCtrl.create({
