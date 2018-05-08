@@ -14,12 +14,19 @@
   
   
   <ion-content padding class="primary-bg">
-    <ion-card *ngFor= "let carrito of carritoList; let i = index">
-      <ion-item>
-        <h2>{{this.toTitleCase(carrito.name)}}</h2><ion-avatar item-start>
-            <img src="assets/imgs/todos.jpg">
-        </ion-avatar>
-      </ion-item>
+    <ion-card *ngFor= "let carrito of this.carritoList; let i = index">
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <h2>{{this.toTitleCase(carrito.name)}}</h2><ion-avatar item-start>
+                        <img src="assets/imgs/todos.jpg">
+                    </ion-avatar>
+                  </ion-item>
+            </ion-col>
+            <ion-col>
+                <button class = "btn" color="danger" ion-button (click)="delete(i)"> <ion-icon name="close"></ion-icon> </button>
+            </ion-col>
+     </ion-row>
       
       <ion-row>
         <ion-col>
@@ -43,7 +50,7 @@
     </ion-card>
     <div text-center>
     <button class= "button_s" ion-button color="secondary" (click)="save()" >Guardar <ion-icon name="bookmark" color="light" style="font-size:20px"></ion-icon> </button>
-    <button class= "button_s" ion-button color="secondary" (click)="confirm()">Confirmar <ion-icon name="checkmark" color="light" style="font-size:24px"></ion-icon> </button>
+    <button class= "button_s" ion-button color="secondary" (click)="presentPrompt()">Confirmar <ion-icon name="checkmark" color="light" style="font-size:24px"></ion-icon> </button>
     </div>
   </ion-content>
  

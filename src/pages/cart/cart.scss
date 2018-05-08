@@ -21,4 +21,14 @@ page-cart {
         .icon:before{
             margin: 0 10px;
           }}
+    .btn {
+        display:block;
+            height: 30px;
+            width: 10px;
+            border-radius: 100%;
+            border: px solid red;
+            position: absolute;
+            right:    10px;
+    }
+    
 }
