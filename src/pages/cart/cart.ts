@@ -79,7 +79,6 @@ export class CartPage {
         )
     }
     delete(i){
-      this.save()
       this.loading= this.loadingController.create({
         content : 'Cargando..'
         //duration : 3000

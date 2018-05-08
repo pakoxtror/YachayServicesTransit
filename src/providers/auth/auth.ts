@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-let apiURL = 'http://192.168.88.61:3000/api/v1/login'
+let apiURL = 'http://127.0.0.1:3000/api/v1/login/'
 /*
   Generated class for the AuthProvider provider.
 
@@ -14,15 +14,22 @@ export class AuthProvider {
     console.log('Hello AuthProvider Provider');
   }
   login(values) {
-    return new Promise((resolve, reject) => {
-      this.http.post(apiURL, values)
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
-    });
+    return new Promise(resolve => {
+      this.http.get(apiURL,{params:values}).subscribe(
+        data=>{
+          resolve(data)
+  
+          console.log(data);
+        },err =>{
+          console.log(err);
+          if(!err.ok){
+            console.log("error");
+          }
+        }
+      )
+    })
   
   }
+
 }
 
