@@ -104,6 +104,51 @@ export class CategoryService {
         )
       })
   }
+
+  getVendedorProducts(id_user : string){
+    this.loading= this.loadingController.create({
+      content : 'Cargando..'
+      //duration : 3000
+    });
+      this.loading.present();
+      return new Promise(resolve => {
+        this.http.get(url + '/api/v1/vendedor/'+id_user).subscribe(
+          data=>{
+            resolve(data)
+            this.loading.dismiss()
+          },err =>{
+            console.log(err);
+            if(!err.ok){
+              this.loading.dismiss();
+              this.showAlert();
+            }
+          }
+        )
+      })
+  }
+
+  getListaVendedorProducts(id_user : string,id_prod : string){
+    this.loading= this.loadingController.create({
+      content : 'Cargando..'
+      //duration : 3000
+    });
+      this.loading.present();
+      return new Promise(resolve => {
+        this.http.get(url + '/api/v1/vendedor/lista/'+id_user+'/'+id_prod).subscribe(
+          data=>{
+            resolve(data)
+            this.loading.dismiss()
+          },err =>{
+            console.log(err);
+            if(!err.ok){
+              this.loading.dismiss();
+              this.showAlert();
+            }
+          }
+        )
+      })
+  }
+
   showAlert() {
     let alert = this.alertCtrl.create({
       title: 'No Internet!',
