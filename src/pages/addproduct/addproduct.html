@@ -44,7 +44,7 @@
       <ion-label color="dark" stack>
         <ion-icon name="md-calendar" item-start>  Fecha:</ion-icon>
       </ion-label>
-      <ion-datetime placeholder = "Entrega" displayFormat="MM/DD/YYYY H:m" formControlName="delivery_date"></ion-datetime>
+      <ion-datetime min = {{this.myDate}}  max="2120-10-31" placeholder = "Entrega" displayFormat="MM/DD/YYYY H:m" formControlName="delivery_date"></ion-datetime>
     </ion-item>
     <p ion-text color="danger" class="text-12x has-error" *ngIf="onAddForm.get('delivery_date').touched && onAddForm.get('delivery_date').hasError('required')">El campo es requerido</p>
     </ion-col>
@@ -54,7 +54,7 @@
       <ion-label stack color="dark" >
           <ion-icon name="md-calendar" item-start>  Fecha:</ion-icon>
       </ion-label>
-      <ion-datetime placeholder = "Inicio de Venta" displayFormat="MM/DD/YYYY" formControlName="start_date"></ion-datetime>
+      <ion-datetime min = {{this.myDate}} max="2120-10-31" placeholder = "Inicio de Venta" displayFormat="MM/DD/YYYY" formControlName="start_date"></ion-datetime>
     </ion-item>
     <p ion-text color="danger" class="text-12x has-error" *ngIf="onAddForm.get('start_date').touched && onAddForm.get('start_date').hasError('required')">El campo es requerido</p>
     </ion-col>

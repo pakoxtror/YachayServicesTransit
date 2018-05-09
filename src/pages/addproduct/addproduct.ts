@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {NavController, AlertController, ToastController, MenuController, NavParams, LoadingController} from "ionic-angular";
 import { CategoryService } from '../../providers/category-service-mock'
-
+import moment from 'moment';
 /**
  * Generated class for the AddproductPage page.
  *
@@ -16,6 +16,9 @@ import { CategoryService } from '../../providers/category-service-mock'
   templateUrl: 'addproduct.html',
 })
 export class AddproductPage {
+
+
+  myDate: String = moment().format();
   loading : any;
   id_user : number;
   numberSettings: any = {
@@ -36,6 +39,7 @@ export class AddproductPage {
   }
 
   ngOnInit() {
+    console.log(this.myDate);
     this.onAddForm = this._fb.group({
       name: ['', Validators.compose([
         Validators.required

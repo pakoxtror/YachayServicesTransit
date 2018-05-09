@@ -31,7 +31,7 @@
 							<ion-icon name="mail" item-start class="text-white"></ion-icon>
 							Email
 						</ion-label>
-						<ion-input type="mail" formControlName="email"></ion-input>
+						<ion-input type="email" formControlName="email"></ion-input>
 					</ion-item>
 					<p ion-text color="danger" class="text-12x has-error" *ngIf="onLoginForm.get('email').touched && onLoginForm.get('email').hasError('required')">This field is required</p>
 
@@ -84,7 +84,7 @@
 		          <ion-icon name="mail" item-start class="text-white"></ion-icon>
 		          Email:
 		        </ion-label>
-		        <ion-input type="mail" formControlName="email"></ion-input>
+		        <ion-input type="email" formControlName="email"></ion-input>
 		      </ion-item>
 		      <p ion-text color="danger" class="text-12x has-error" *ngIf="onRegisterForm.get('email').touched && onRegisterForm.get('email').hasError('required')">This field is required</p>
 
