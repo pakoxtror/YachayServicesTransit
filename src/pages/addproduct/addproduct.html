@@ -66,7 +66,7 @@
             <ion-label >
                   <ion-icon name="ios-cash-outline" class="text-white"></ion-icon>
             </ion-label>
-            <ion-input type="text" formControlName="price" placeholder = "Precio" ></ion-input>
+            <ion-input type="number" formControlName="price" placeholder = "Precio" ></ion-input>
         </ion-item>
         <p ion-text color="danger" class="text-12x has-error" *ngIf="onAddForm.get('price').touched && onAddForm.get('price').hasError('required')">El campo es requerido</p>
       </ion-col>
@@ -83,7 +83,7 @@
       </ion-row>
 
     <div text-center>
-    <button style="margin-top:10px" ion-button round color="secondary" type="submit" (click)="postProduct()">Empezar a vender</button>
+    <button style="margin-top:10px" ion-button round color="secondary" type="submit" (click)="postProduct()" [disabled]="!onAddForm.valid">Empezar a vender</button>
     </div>
   </form>
 

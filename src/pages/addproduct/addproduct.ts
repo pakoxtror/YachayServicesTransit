@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
-import {NavController, AlertController, ToastController, MenuController, NavParams} from "ionic-angular";
-
+import {NavController, AlertController, ToastController, MenuController, NavParams, LoadingController} from "ionic-angular";
+import { CategoryService } from '../../providers/category-service-mock'
 
 /**
  * Generated class for the AddproductPage page.
@@ -16,6 +16,7 @@ import {NavController, AlertController, ToastController, MenuController, NavPara
   templateUrl: 'addproduct.html',
 })
 export class AddproductPage {
+  loading : any;
   id_user : number;
   numberSettings: any = {
       theme: 'ios',
@@ -29,7 +30,7 @@ export class AddproductPage {
   todo:any = {}
   public onAddForm : FormGroup;
 
-  constructor(private _fb: FormBuilder, public nav: NavController, public navParams: NavParams, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController,  public http: Http) {
+  constructor(private loadingController: LoadingController, public categoryService: CategoryService, private _fb: FormBuilder, public nav: NavController, public navParams: NavParams, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController,  public http: Http) {
     this.id_user = this.navParams.get('id_user');
     console.log(this.id_user);
   }
@@ -60,15 +61,34 @@ export class AddproductPage {
       id_user: [this.id_user]
     });
   }
+ 
   postProduct() {
-    console.log(this.id_user);
-    console.log(this.onAddForm.value);
-    var link = 'http://192.168.88.61:3000/api/v1/product';
-        this.http.post(link, this.onAddForm.value)
-        .subscribe(data => {
-        	this.todo.response = data["_body"];
-        }, error => {
-            console.log("Oooops!");
-        });
+    this.loading= this.loadingController.create({
+      content : 'Publicando..',
+    });
+      this.loading.present();
+    this.categoryService.addproduct(this.onAddForm.value).then((result) => {
+      this.loading.dismiss();
+      this.presentToastrc();
+    }, (err) => {
+      console.log("error no recibi nada");
+      this.presentToastr()
+      this.loading.dismiss();
+        })
+        
+  }
+  presentToastr() {
+    let toast = this.toastCtrl.create({
+      message: 'Error al subir producto',
+      duration: 3000
+    });
+    toast.present();
+  }
+  presentToastrc() {
+    let toast = this.toastCtrl.create({
+      message: 'Registrado Correctamente',
+      duration: 2000
+    });
+    toast.present();
   }
 }

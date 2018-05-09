@@ -70,8 +70,10 @@ export class AuthPage implements OnInit {
         this.loading.dismiss();
         
       } else{
-        console.log(this.respuesta);
-        this.id_user = this.respuesta.id_user;
+        console.log('esto');
+        console.log(this.respuesta );
+        console.log(this.respuesta[0].id_user);
+        this.id_user = this.respuesta[0].id_user;
         this.nav.setRoot(CategoryPage,{id_user: this.id_user});
         this.loading.dismiss();
       }

@@ -205,6 +205,22 @@ register(result){
     )
   })
 }
+
+addproduct(result){
+  return new Promise(resolve => {
+    this.http.post(url + '/api/v1/product',result).subscribe(
+      data=>{
+        resolve(data)
+      },err =>{
+        console.log(err);
+        if(!err.ok){
+          this.showAlert();
+        }
+      }
+    )
+  })
+}
+
   showAlert() {
     let alert = this.alertCtrl.create({
       title: 'No Internet!',
