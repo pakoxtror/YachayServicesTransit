@@ -4,6 +4,8 @@ import {NavController, AlertController, ToastController, MenuController, Loading
 import { Http} from '@angular/http';
 import {CategoryPage} from "../category/category";
 import {AuthProvider} from '../../providers/auth/auth';
+import { CategoryService } from '../../providers/category-service-mock'
+
 // import {RegisterPage} from "../register/register";
 
 @Component({
@@ -19,13 +21,13 @@ export class AuthPage implements OnInit {
   public respuesta:any = {};
   public id_user: number ;
 
-  constructor(private loadingController: LoadingController,public authprovider: AuthProvider, private _fb: FormBuilder, public nav: NavController, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController,  public http: Http) {
+  constructor(public categoryService:CategoryService, private loadingController: LoadingController,public authprovider: AuthProvider, private _fb: FormBuilder, public nav: NavController, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController,  public http: Http) {
     this.menu.swipeEnable(false);
   }
 
   ngOnInit() {
     this.onLoginForm = this._fb.group({
-      user_name: ['', Validators.compose([
+      email: ['', Validators.compose([
         Validators.required
       ])],
       password: ['', Validators.compose([
@@ -37,10 +39,16 @@ export class AuthPage implements OnInit {
       name: ['', Validators.compose([
         Validators.required
       ])],
+      lastname: ['', Validators.compose([
+        Validators.required
+      ])],
       email: ['', Validators.compose([
         Validators.required
       ])],
       password: ['', Validators.compose([
+        Validators.required
+      ])],
+      cellphone: ['', Validators.compose([
         Validators.required
       ])]
     });
@@ -69,29 +77,48 @@ export class AuthPage implements OnInit {
       }
     }, (err) => {
       console.log("error no recibi nada");
-      
-        })
-
-        
-        
+      this.presentToast() 
+      this.loading.dismiss();
+        })    
   }
 
 
   register() {
-    console.log(this.onRegisterForm.value)
-    var link = 'http://192.168.88.61:3000/api/v1/r';
-        this.http.post(link, this.onRegisterForm.value)
-        .subscribe(data => {
-          this.todo = data["_body"];
-        }, error => {
-            console.log("Oooops!");
-        });
+    var vacio;
+    this.loading= this.loadingController.create({
+      content : 'Verificando..',
+    });
+      this.loading.present();
+    this.categoryService.register(this.onRegisterForm.value).then((result) => {
+      vacio = result;
+      this.loading.dismiss();
+      this.presentToastrc();
+    }, (err) => {
+      console.log("error no recibi nada");
+      this.presentToastr()
+      this.loading.dismiss();
+        })
+        
   }
 
   presentToast() {
     let toast = this.toastCtrl.create({
       message: 'Autentificación fallida',
       duration: 3000
+    });
+    toast.present();
+  }
+  presentToastr() {
+    let toast = this.toastCtrl.create({
+      message: 'Error al Registrarte',
+      duration: 3000
+    });
+    toast.present();
+  }
+  presentToastrc() {
+    let toast = this.toastCtrl.create({
+      message: 'Registrado Correctamente',
+      duration: 2000
     });
     toast.present();
   }

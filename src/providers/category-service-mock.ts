@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AlertController,LoadingController } from 'ionic-angular';
-let url = 'http://192.168.88.61:3000'
+let url = 'http://127.0.0.1:3000'
 
 @Injectable()
 export class CategoryService {
@@ -180,6 +180,20 @@ deleteCart(result){
 order(result, direction){
   return new Promise(resolve => {
     this.http.put(url + '/api/v1/order/'+direction,result).subscribe(
+      data=>{
+        resolve(data)
+      },err =>{
+        console.log(err);
+        if(!err.ok){
+          this.showAlert();
+        }
+      }
+    )
+  })
+}
+register(result){
+  return new Promise(resolve => {
+    this.http.post(url + '/api/v1/r',result).subscribe(
       data=>{
         resolve(data)
       },err =>{
