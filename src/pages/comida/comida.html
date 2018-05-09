@@ -16,12 +16,13 @@
 <ion-content padding>
   <ion-card *ngFor= "let comida of comidaList">
     <ion-item>
-      <h2>{{comida.seller_fname}} {{comida.seller_lname}}</h2>
-      <p>{{comida.register_date}}</p>
+      <h2>{{toTitleCase(comida.name)}}</h2>
+      <p>{{toTitleCase(comida.seller_fname)}} {{toTitleCase(comida.seller_lname)}}</>
+      <p>Fecha de Registro : {{spliceDate(comida.register_date)}}</p>
     </ion-item>
     <img src="assets/imgs/todos.jpg">
     <ion-card-content>
-      <p>{{comida.description}}</p>
+      <p>{{toTitleCase(comida.description)}}</p>
     </ion-card-content>
     <ion-row>
       <ion-col>
@@ -39,15 +40,20 @@
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="cash"></ion-icon>
-          <div>$ {{comida.precio_unitario}}</div>
+          <div>$ {{comida.price}}</div>
         </button>
       </ion-col>
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="calendar"></ion-icon>
-          <div>Entrega: {{comida.delivery_date}}</div>
+          <div>Entrega:</div>
         </button>
       </ion-col>
+      <ion-col>
+          <button ion-button icon-left clear small>
+            <div>{{spliceDeliveryDate(comida.delivery_date)}}</div>
+          </button>
+        </ion-col>
     </ion-row>
   </ion-card>
 </ion-content>

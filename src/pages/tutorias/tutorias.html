@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>tutorias</ion-title>
+    <ion-title>Tutorias</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,12 +16,13 @@
 <ion-content padding>
     <ion-card *ngFor= "let tutoria of tutoriaList">
       <ion-item>
-        <h2>{{tutoria.seller_fname}} {{tutoria.seller_lname}}</h2>
-        <p>{{tutoria.register_date}}</p>
+        <h2>{{toTitleCase(tutoria.name)}}</h2>
+        <p>{{toTitleCase(tutoria.seller_fname)}} {{toTitleCase(tutoria.seller_lname)}}</p>
+        <p>Fecha de Registro : {{spliceDate(tutoria.register_date)}}</p>
       </ion-item>
       <img src="assets/imgs/todos.jpg">
       <ion-card-content>
-        <p>{{tutoria.description}}</p>
+        <p>{{toTitleCase(tutoria.description)}}</p>
       </ion-card-content>
       <ion-row>
         <ion-col>
@@ -39,15 +40,20 @@
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="cash"></ion-icon>
-            <div>$ {{tutoria.precio_unitario}}</div>
+            <div>$ {{tutoria.price}}</div>
           </button>
         </ion-col>
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="calendar"></ion-icon>
-            <div>Entrega: {{tutoria.delivery_date}}</div>
+            <div>Entrega:</div>
           </button>
         </ion-col>
+        <ion-col>
+            <button ion-button icon-left clear small>
+              <div>{{spliceDeliveryDate(tutoria.delivery_date)}}</div>
+            </button>
+          </ion-col>
       </ion-row>
     </ion-card>
   </ion-content>

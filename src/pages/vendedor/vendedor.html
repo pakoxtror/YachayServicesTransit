@@ -16,12 +16,12 @@
 <ion-content padding>
   <ion-card *ngFor= "let venta of ventaList">
     <ion-item>
-      <h2>{{venta.name}}</h2>
-      <p>{{venta.register_date}}</p>
+      <h2>{{toTitleCase(venta.name)}}</h2>
+      <p>Fecha de Registro : {{spliceDate(venta.register_date)}}</p>
     </ion-item>
     <img src="assets/imgs/todos.jpg">
     <ion-card-content>
-      <p>{{venta.description}}</p>
+      <p>{{toTitleCase(venta.description)}}</p>
     </ion-card-content>
     <ion-row>
       <ion-col>
@@ -33,13 +33,13 @@
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="checkmark"></ion-icon>
-          <div>Vendidos {{venta.suma}}</div>
+          <div>Vendidos {{venta.vendido}}</div>
         </button>
       </ion-col>
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="cash"></ion-icon>
-          <div>$ {{venta.precio_unitario}}</div>
+          <div>$ {{venta.price}}</div>
         </button>
       </ion-col>
       <ion-col>
@@ -51,8 +51,11 @@
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="calendar"></ion-icon>
-          <div>Entrega: {{venta.delivery_date}}</div>
+          <div>Entrega: </div>
         </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>{{spliceDeliveryDate(venta.delivery_date)}}</button>
       </ion-col>
     </ion-row>
   </ion-card>

@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>todos</ion-title>
+    <ion-title>Todos</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,12 +16,13 @@
 <ion-content padding>
     <ion-card *ngFor= "let todo of todoList">
       <ion-item>
-        <h2>{{todo.seller_fname}} {{todo.seller_lname}}</h2>
-        <p>{{todo.register_date}}</p>
+        <h2>{{toTitleCase(todo.name)}}</h2>
+        <p>{{toTitleCase(todo.seller_fname)}} {{toTitleCase(todo.seller_lname)}}</p>
+        <p>Fecha de Registro : {{spliceDate(todo.register_date)}}</p>
       </ion-item>
       <img src="assets/imgs/todos.jpg">
       <ion-card-content>
-        <p>{{todo.description}}</p>
+        <p>{{toTitleCase(todo.description)}}</p>
       </ion-card-content>
       <ion-row>
         <ion-col>
@@ -39,15 +40,20 @@
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="cash"></ion-icon>
-            <div>$ {{todo.precio_unitario}}</div>
+            <div>$ {{todo.price}}</div>
           </button>
         </ion-col>
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="calendar"></ion-icon>
-            <div>Entrega: {{todo.delivery_date}}</div>
+            <div>Entrega:</div>
           </button>
         </ion-col>
+        <ion-col>
+            <button ion-button icon-left clear small>
+              <div>{{spliceDeliveryDate(todo.delivery_date)}}</div>
+            </button>
+          </ion-col>
       </ion-row>
     </ion-card>
   </ion-content>

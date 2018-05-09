@@ -21,6 +21,7 @@ export class ListaPage {
   public entregaList : any;
   id_user : number;
   id_product : number;
+  name : string = "";
   constructor(public toastCtrl : ToastController,public navCtrl: NavController, public navParams: NavParams,public categoryService:CategoryService) {
     this.id_user = this.navParams.get('id_user');
     this.id_product = this.navParams.get('id_product');
@@ -29,16 +30,19 @@ export class ListaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListaPage');
-    this.categoryService.getListaVendedorProducts(this.id_product.toString(),this.id_product.toString())
+    this.categoryService.getListaVendedorProducts(this.id_user.toString(),this.id_product.toString())
     .then(
       (data) => { // Success
         this.entregaList=data;
-        console.log(this.entregaList);
+        this.name = this.entregaList[0].comida;
       },
       (error) =>{
         console.error(error);
       }
     )
+  }
+  toTitleCase(str :string){
+    return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
   openCartPage() {

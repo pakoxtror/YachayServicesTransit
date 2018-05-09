@@ -16,12 +16,13 @@
 <ion-content padding>
     <ion-card *ngFor= "let ocio of ocioList">
       <ion-item>
-        <h2>{{ocio.seller_fname}} {{ocio.seller_lname}}</h2>
-        <p>{{ocio.register_date}}</p>
+        <h2>{{toTitleCase(ocio.name)}}</h2>
+        <p>{{toTitleCase(ocio.seller_fname)}} {{toTitleCase(ocio.seller_lname)}}</p>
+        <p>Fecha de Registro : {{spliceDate(ocio.register_date)}}</p>
       </ion-item>
       <img src="assets/imgs/todos.jpg">
       <ion-card-content>
-        <p>{{ocio.description}}</p>
+        <p>{{toTitleCase(ocio.description)}}</p>
       </ion-card-content>
       <ion-row>
         <ion-col>
@@ -39,15 +40,20 @@
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="cash"></ion-icon>
-            <div>$ {{ocio.precio_unitario}}</div>
+            <div>$ {{ocio.price}}</div>
           </button>
         </ion-col>
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="calendar"></ion-icon>
-            <div>Entrega: {{ocio.delivery_date}}</div>
+            <div>Entrega:</div>
           </button>
         </ion-col>
+        <ion-col>
+            <button ion-button icon-left clear small>
+              <div>{{spliceDeliveryDate(ocio.delivery_date)}}</div>
+            </button>
+          </ion-col>
       </ion-row>
     </ion-card>
   </ion-content>

@@ -38,6 +38,18 @@ export class VendedorPage {
     )
   }
 
+  toTitleCase(str :string){
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  spliceDate(str :string){
+    return str.substring(0,10);
+  }
+
+  spliceDeliveryDate(str :string){
+    return str.substring(0,10)+'   '+str.substring(11,16);
+  }
+
   openCartPage() {
     this.navCtrl.push(CartPage,{id_user:this.id_user});
   }

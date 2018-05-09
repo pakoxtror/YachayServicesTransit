@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>lista</ion-title>
+    <ion-title>Lista de {{toTitleCase(this.name)}} </ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,11 +16,12 @@
 <ion-content padding>
   <ion-card *ngFor= "let entrega of entregaList">
     <ion-card-header>
-      <p>{{entrega.direction}}</p>
+      <p>{{toTitleCase(entrega.direction)}}</p>
     </ion-card-header>
     <ion-card-content>
       <h2>{{entrega.prod_name}}</h2>
-      <p>Entregar a : {{entrega.name}} {{entrega.last_name}}</p>
+      <p>Entregar a : {{toTitleCase(entrega.name)}} {{toTitleCase(entrega.lastname)}}</p>
+      <p>Cantidad : {{entrega.quantity}}</p>
     </ion-card-content>
   </ion-card>
 </ion-content>
