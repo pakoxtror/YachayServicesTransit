@@ -32,21 +32,30 @@
         <ion-col>
             <button ion-button icon-left clear small>
                 <ion-icon name="cash"></ion-icon>
-                <div>$ {{carrito.precio_unitario}}</div>
+                <div>$ {{carrito.price}}</div>
               </button>
         </ion-col>
         <ion-col>
             <button ion-button  small (click)="add(i)"> <ion-icon name="add"></ion-icon> </button>
-            <button ion-button  small (click)="remove(i)"> <ion-icon name="remove"></ion-icon> </button>
             <button ion-button  small> {{cant(i)}} </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-left clear small>
-            <ion-icon name="calendar"></ion-icon>
-            <div>Entrega: {{carrito.delivery_date}}</div>
-          </button>
+            <button ion-button  small (click)="remove(i)"> <ion-icon name="remove"></ion-icon> </button>
         </ion-col>
       </ion-row>
+
+      <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="calendar"></ion-icon>
+          <div>Entrega: </div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button clear small>
+          <div>{{this.spliceDeliveryDate(carrito.delivery_date)}}</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
     </ion-card>
     <div text-center>
     <button class= "button_s" ion-button color="secondary" (click)="save()" >Guardar <ion-icon name="bookmark" color="light" style="font-size:20px"></ion-icon> </button>

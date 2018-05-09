@@ -179,13 +179,12 @@ deleteCart(result){
 }
 order(result, direction){
   return new Promise(resolve => {
-    this.http.put(url + '/api/v1/order/'+direction,result).subscribe(
+    this.http.post(url + '/api/v1/order/'+direction,result).subscribe(
       data=>{
         resolve(data)
       },err =>{
         console.log(err);
         if(!err.ok){
-          this.showAlert();
         }
       }
     )
