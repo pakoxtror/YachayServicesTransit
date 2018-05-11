@@ -4,6 +4,9 @@ import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {NavController, AlertController, ToastController, MenuController, NavParams, LoadingController} from "ionic-angular";
 import { CategoryService } from '../../providers/category-service-mock'
 import moment from 'moment';
+import {CategoryPage} from "../category/category";
+
+
 /**
  * Generated class for the AddproductPage page.
  *
@@ -67,17 +70,12 @@ export class AddproductPage {
   }
  
   postProduct() {
-    this.loading= this.loadingController.create({
-      content : 'Publicando..',
-    });
-      this.loading.present();
     this.categoryService.addproduct(this.onAddForm.value).then((result) => {
-      this.loading.dismiss();
       this.presentToastrc();
+      this.nav.push(CategoryPage,{id_user: this.id_user});
     }, (err) => {
       console.log("error no recibi nada");
       this.presentToastr()
-      this.loading.dismiss();
         })
         
   }

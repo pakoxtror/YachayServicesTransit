@@ -191,14 +191,20 @@ order(result, direction){
   })
 }
 register(result){
+  this.loading= this.loadingController.create({
+    content : 'Verificando..',
+  });
+    this.loading.present();
   return new Promise(resolve => {
     this.http.post(url + '/api/v1/r',result).subscribe(
       data=>{
         resolve(data)
+        this.loading.dismiss();
       },err =>{
         console.log(err);
         if(!err.ok){
           this.showAlert();
+          this.loading.dismiss();
         }
       }
     )
@@ -206,14 +212,20 @@ register(result){
 }
 
 addproduct(result){
+  this.loading= this.loadingController.create({
+    content : 'Publicando..',
+  });
+    this.loading.present();
   return new Promise(resolve => {
     this.http.post(url + '/api/v1/product',result).subscribe(
       data=>{
         resolve(data)
+        this.loading.dismiss();
       },err =>{
         console.log(err);
         if(!err.ok){
           this.showAlert();
+          this.loading.dismiss();
         }
       }
     )
@@ -236,10 +248,35 @@ getStock(id_product: number){
   })
 }
 
+login(values) {
+  this.loading= this.loadingController.create({
+    content : 'Verificando..',
+    duration : 5000
+  });
+    this.loading.present();
+  return new Promise(resolve => {
+    this.http.get(url+'/api/v1/login/',{params:values}).subscribe(
+      data=>{
+        resolve(data)
+
+        console.log(data);
+        this.loading.dismiss();
+      },err =>{
+        console.log(err);
+        if(!err.ok){
+          console.log("error");
+          this.loading.dismiss();
+          this.showAlert();
+        }
+      }
+    )
+  })
+
+}
   showAlert() {
     let alert = this.alertCtrl.create({
-      title: 'No Internet!',
-      subTitle: 'Please connect!',
+      title: 'Fallo al conectar con el servidor',
+      subTitle: 'Revisa tu coneccion a internet',
       buttons: ['OK']
     });
     alert.present();

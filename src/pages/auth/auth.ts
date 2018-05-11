@@ -56,18 +56,12 @@ export class AuthPage implements OnInit {
 
   // login and go to home page
   login() {
-    this.loading= this.loadingController.create({
-      content : 'Verificando..',
-      duration : 5000
-    });
-      this.loading.present();
-    this.authprovider.login(this.onLoginForm.value).then((result) => {
+    this.categoryService.login(this.onLoginForm.value).then((result) => {
       this.respuesta = result;
       if (this.respuesta.length != 1){
         this.presentToast() 
         console.log(this.respuesta);
         console.log(this.respuesta.length);
-        this.loading.dismiss();
         
       } else{
         console.log('esto');
@@ -75,30 +69,19 @@ export class AuthPage implements OnInit {
         console.log(this.respuesta[0].id_user);
         this.id_user = this.respuesta[0].id_user;
         this.nav.setRoot(CategoryPage,{id_user: this.id_user});
-        this.loading.dismiss();
       }
     }, (err) => {
       console.log("error no recibi nada");
-      this.presentToast() 
-      this.loading.dismiss();
+  
         })    
   }
 
 
   register() {
-    var vacio;
-    this.loading= this.loadingController.create({
-      content : 'Verificando..',
-    });
-      this.loading.present();
     this.categoryService.register(this.onRegisterForm.value).then((result) => {
-      vacio = result;
-      this.loading.dismiss();
       this.presentToastrc();
     }, (err) => {
       console.log("error no recibi nada");
-      this.presentToastr()
-      this.loading.dismiss();
         })
         
   }
