@@ -3,6 +3,7 @@ import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {NavController, AlertController, ToastController, MenuController, LoadingController} from "ionic-angular";
 import { Http} from '@angular/http';
 import {CategoryPage} from "../category/category";
+import { InformationPage } from "../information/information";
 import {AuthProvider} from '../../providers/auth/auth';
 import { CategoryService } from '../../providers/category-service-mock'
 
@@ -84,6 +85,10 @@ export class AuthPage implements OnInit {
       console.log("error no recibi nada");
         })
         
+  }
+
+  forgotPass(){
+    this.nav.push(InformationPage);
   }
 
   presentToast() {

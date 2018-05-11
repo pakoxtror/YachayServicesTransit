@@ -45,17 +45,10 @@
 					<p ion-text color="danger" class="text-12x has-error" *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">This field is required</p>
 				</form>
 				<p text-right ion-text color="darksoft" tappable (click)="forgotPass()">Forgot Password?</p>
-
-				<ion-footer class="confirm-login" no-border>
-					<ion-toolbar color="white">
-						<ion-title>
 							<button ion-button full color="secondary" (click)="login()" [disabled]="!onLoginForm.valid">
 								<ion-icon name="log-in"></ion-icon>
 								INGRESA
 							</button>
-						</ion-title>
-					</ion-toolbar>
-				</ion-footer>
 			</div>
 
 			<div id="registerForm" *ngSwitchCase="'register'">
