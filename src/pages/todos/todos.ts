@@ -24,7 +24,7 @@ export class TodosPage {
     this.id_user = this.navParams.get('id_user');
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad TodosPage');
     this.categoryService.getAllProducts()
     .then(

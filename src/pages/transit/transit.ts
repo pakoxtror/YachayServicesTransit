@@ -4,8 +4,9 @@ import { CartPage } from '../cart/cart';
 import { AddproductPage } from '../addproduct/addproduct';
 import { InformationPage } from '../information/information';
 import { CategoryService } from '../../providers/category-service-mock'
+
 /**
- * Generated class for the TecnologiaPage page.
+ * Generated class for the TransitPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -13,23 +14,23 @@ import { CategoryService } from '../../providers/category-service-mock'
 
 @IonicPage()
 @Component({
-  selector: 'page-tecnologia',
-  templateUrl: 'tecnologia.html',
+  selector: 'page-transit',
+  templateUrl: 'transit.html',
 })
-export class TecnologiaPage {
-  public tecnologiaList : any;
+export class TransitPage {
+  public transitList : any;
   id_user : number;
   constructor(public toastCtrl : ToastController,public navCtrl: NavController, public navParams: NavParams,public categoryService:CategoryService) {
     this.id_user = this.navParams.get('id_user');
   }
 
   ionViewDidEnter() {
-    console.log('ionViewDidLoad TecnologiaPage');
-    this.categoryService.getCategoryProducts("3")
+    console.log('ionViewDidLoad TransitPage');
+    this.categoryService.getTransitProducts(this.id_user.toString())
     .then(
       (data) => { // Success
-        this.tecnologiaList=data;
-        console.log(this.tecnologiaList);
+        this.transitList=data;
+        console.log(this.transitList);
       },
       (error) =>{
         console.error(error);
@@ -37,17 +38,12 @@ export class TecnologiaPage {
     )
   }
 
-  gotoCart(id_product:number){
-    this.categoryService.sendCart(this.id_user,id_product)
-    .then(
-      (data)=>{
-        this.presentToastExito();
-        console.log(data);
-      },
-      (error) =>{
-        this.presentToastFallido();
-      }
-    )
+  entregado(){
+    console.log("entregado")
+  }
+
+  noEntregado(){
+    console.log("noEntregado")
   }
 
   toTitleCase(str :string){
@@ -61,7 +57,6 @@ export class TecnologiaPage {
   spliceDeliveryDate(str :string){
     return str.substring(0,10)+'   '+str.substring(11,16);
   }
-  
   openCartPage() {
     this.navCtrl.push(CartPage,{id_user:this.id_user});
   }
@@ -87,3 +82,4 @@ export class TecnologiaPage {
     toast.present();
   }
 }
+

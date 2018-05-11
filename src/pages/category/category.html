@@ -35,9 +35,14 @@
       <div class="card-title">Todos</div>
       <p class ="card-subtitle">Productos Disponibles: {{numCat4}}</p>
     </ion-card>
+    <ion-card tappable (click)="openCategoryPage('Transit')">
+			<img src="assets/imgs/transit.jpg"/>
+      <div class="card-title">Productos en Camino</div>
+      <p class ="card-subtitle">Ver tus pedidos</p>
+	  </ion-card>
     <ion-card tappable (click)="openCategoryPage('Vendedor')">
 			<img src="assets/imgs/seller.jpg"/>
-      <div class="card-title">Productos en venta</div>
+      <div class="card-title">Productos en Venta</div>
       <p class ="card-subtitle">Ver tus productos</p>
 	  </ion-card>
 </ion-content>

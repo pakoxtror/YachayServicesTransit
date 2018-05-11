@@ -24,7 +24,7 @@ export class TutoriasPage {
     this.id_user = this.navParams.get('id_user');
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad TutoriasPage');
     this.categoryService.getCategoryProducts("4")
     .then(

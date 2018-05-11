@@ -24,7 +24,7 @@ export class ComidaPage {
     this.id_user = this.navParams.get('id_user');
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad ComidaPage');
     this.categoryService.getCategoryProducts("1")
     .then(

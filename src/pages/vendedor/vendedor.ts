@@ -24,7 +24,7 @@ export class VendedorPage {
     console.log(this.id_user.toString());
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad VendedorPage');
     this.categoryService.getVendedorProducts(this.id_user.toString())
     .then(

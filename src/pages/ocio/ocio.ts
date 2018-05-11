@@ -24,7 +24,7 @@ export class OcioPage {
     this.id_user = this.navParams.get('id_user');
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad OcioPage');
     this.categoryService.getCategoryProducts("2")
     .then(

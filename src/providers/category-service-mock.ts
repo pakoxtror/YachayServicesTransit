@@ -61,6 +61,29 @@ export class CategoryService {
       })
   }
 
+  getTransitProducts(id_user :string){
+    this.loading= this.loadingController.create({
+      content : 'Cargando..'
+      //duration : 3000
+    });
+      this.loading.present();
+      return new Promise(resolve => {
+        this.http.get(url + '/api/v1/transit/'+id_user).subscribe(
+          data=>{
+            resolve(data)
+            this.loading.dismiss()
+          },err =>{
+            console.log(err);
+            if(!err.ok){
+              this.loading.dismiss();
+              this.showAlert();
+            }
+          }
+        )
+      })
+  }
+
+
   getCategoryProducts(id_category : string){
     this.loading= this.loadingController.create({
       content : 'Cargando..'
