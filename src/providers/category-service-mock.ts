@@ -219,6 +219,22 @@ addproduct(result){
     )
   })
 }
+getStock(id_product: number){
+
+  return new Promise(resolve => {
+    this.http.get(url+'/api/v1/stock/'+id_product.toString()).subscribe(
+      data=>{
+        resolve(data)
+        console.log(data);
+      },err =>{
+        console.log(err);
+        if(!err.ok){
+          this.showAlert();
+        }
+      }
+    )
+  })
+}
 
   showAlert() {
     let alert = this.alertCtrl.create({
