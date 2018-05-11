@@ -74,14 +74,14 @@ export class ComidaPage {
   presentToastExito() {
     let toast = this.toastCtrl.create({
       message: 'Exito',
-      duration: 3000
+      duration: 1500
     });
     toast.present();
   }
   presentToastFallido() {
     let toast = this.toastCtrl.create({
       message: 'Fail',
-      duration: 3000
+      duration: 1500
     });
     toast.present();
   }
