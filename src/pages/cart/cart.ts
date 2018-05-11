@@ -62,42 +62,28 @@ export class CartPage {
   }
   
     save(){
-      this.loading= this.loadingController.create({
-        content : 'Cargando..'
-        //duration : 3000
-      });
-        this.loading.present();
       var vacio
         this.categoryService.updateCart(this.carritoList)
         .then(
           (data) => { // Success
             vacio=data;
-            this.loading.dismiss();
             this.presentToastrc();
           },
           (error) =>{
             console.error(error);
-            this.loading.dismiss();
             this.presentToastr();
           }
         )
     }
     delete(i){
-      this.loading= this.loadingController.create({
-        content : 'Cargando..'
-        //duration : 3000
-      });
-        this.loading.present();
       var vacio
         this.categoryService.deleteCart(this.carritoList[i])
         .then(
           (data) => { // Success
             vacio=data;
-            this.loading.dismiss();
           },
           (error) =>{
             console.error(error);
-            this.loading.dismiss();
           }
         )
         this.carritoList.splice(i,1);
@@ -124,23 +110,16 @@ export class CartPage {
             handler: data => {
               if (this.confirmStock()){
                 console.log('login clicked');
-                this.loading= this.loadingController.create({
-                  content : 'Cargando..'
-                  //duration : 3000
-                });
-                  this.loading.present();
                 var vacio
                   this.categoryService.order(this.carritoList,data.Dirección)
                   .then(
                     (data) => { // Success
                       vacio=data;
-                      this.loading.dismiss();
                       this.clear();
                       this.presentToastoc()
                     },
                     (error) =>{
                       console.error(error);
-                      this.loading.dismiss();
                       this.presentToastor()
                     }
                   )}

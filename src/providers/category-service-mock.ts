@@ -150,41 +150,63 @@ export class CategoryService {
   }
 
   updateCart(result){
+    this.loading= this.loadingController.create({
+      content : 'Cargando..'
+      //duration : 3000
+    });
+      this.loading.present();
     return new Promise(resolve => {
       this.http.post(url + '/api/v1/g_carrito',result).subscribe(
         data=>{
           resolve(data)
+          this.loading.dismiss();
         },err =>{
           console.log(err);
           if(!err.ok){
             this.showAlert();
+            this.loading.dismiss();
           }
         }
       )
     })
 }
 deleteCart(result){
+  this.loading= this.loadingController.create({
+    content : 'Cargando..'
+    //duration : 3000
+  });
+    this.loading.present();
   return new Promise(resolve => {
     this.http.post(url + '/api/v1/b_carrito',result).subscribe(
       data=>{
-        resolve(data)
+        resolve(data);
+        this.loading.dismiss();
       },err =>{
         console.log(err);
         if(!err.ok){
           this.showAlert();
+          this.loading.dismiss();
         }
       }
     )
   })
 }
 order(result, direction){
+  this.loading= this.loadingController.create({
+    content : 'Cargando..'
+    //duration : 3000
+  });
+    this.loading.present();
   return new Promise(resolve => {
     this.http.post(url + '/api/v1/order/'+direction,result).subscribe(
       data=>{
         resolve(data)
+        this.loading.dismiss();
       },err =>{
         console.log(err);
         if(!err.ok){
+          this.showAlert();
+          this.loading.dismiss();
         }
       }
     )
