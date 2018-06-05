@@ -17,6 +17,7 @@ import { AddproductPage} from '../pages/addproduct/addproduct';
 import { InformationPage} from '../pages/information/information';
 import { HttpModule} from '@angular/http';
 import { AuthProvider } from '../providers/auth/auth';
+import { TripPage } from '../pages/trip/trip';
 
 @NgModule({
   declarations: [
@@ -29,12 +30,13 @@ import { AuthProvider } from '../providers/auth/auth';
     CategoryPage,
     InformationPage,
     CartPage,
+    TripPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
-    HttpModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,6 +49,7 @@ import { AuthProvider } from '../providers/auth/auth';
     AddproductPage,
     InformationPage,
     CartPage,
+    TripPage
     //CategoryPage,
     //ItemPage,
     //CartPage

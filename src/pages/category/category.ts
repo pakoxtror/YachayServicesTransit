@@ -4,7 +4,7 @@ import { CategoryService } from '../../providers/category-service-mock';
 import { CartPage } from '../cart/cart';
 import { AddproductPage} from '../addproduct/addproduct';
 import { InformationPage} from '../information/information';
-
+import { TripPage } from '../trip/trip';
 @Component({
   selector: 'page-category',
   templateUrl: 'category.html',
@@ -51,5 +51,8 @@ export class CategoryPage {
   openCategoryPage(proptype) {
     proptype = proptype + 'Page';
   	this.navCtrl.push(proptype,this.id_user);
+  }
+  openTripPage(){
+    this.navCtrl.push(TripPage,this.id_user);
   }
 }

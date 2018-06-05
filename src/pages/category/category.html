@@ -44,6 +44,11 @@
 			<img src="assets/imgs/seller.jpg"/>
       <div class="card-title">Productos en Venta</div>
       <p class ="card-subtitle">Ver tus productos</p>
+    </ion-card>
+    <ion-card tappable (click)="openCategoryPage('Viajes')">
+			<img src="assets/imgs/viajes.jpg"/>
+      <div class="card-title">Viajes</div>
+      <p class ="card-subtitle">Ver Ofertas sy Solicitudes</p>
 	  </ion-card>
 </ion-content>
 
@@ -54,6 +59,7 @@
 		<ion-fab-list side="top">
 			<button ion-fab (click)="openAddProductPage()"><ion-icon name="md-add"></ion-icon></button>
       <button ion-fab (click)="openCartPage()"><ion-icon name="md-cart"></ion-icon></button>
+      <button ion-fab (click)="openTripPage()"><ion-icon name="car"></ion-icon></button>
 			<button ion-fab (click)="openInformationPage()"><ion-icon name="information"></ion-icon></button>
-		</ion-fab-list>
+    </ion-fab-list>
 	</ion-fab>

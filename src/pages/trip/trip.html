@@ -1,0 +1,130 @@
+<!--
+  Generated template for the TripPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Viajes</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div padding-vertical>
+    <ion-segment [(ngModel)]="viaje" color="dark">
+      <ion-segment-button value="solicitar">
+        Solicitar
+      </ion-segment-button>
+      <ion-segment-button value="ofrecer">
+        Ofrecer
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="viaje">
+			<!-- Solicitar form -->
+			<div id="SolicitarForm" *ngSwitchCase="'solicitar'">
+				<form [formGroup]="onSolicitarForm" class="list-form">
+            <ion-item>
+                <ion-label floating class="text-white">
+                    <h2 class="text-white"> Origen</h2>
+                </ion-label>
+              <ion-input type="text" formControlName="origen"></ion-input>
+            </ion-item>
+            <p ion-text color="danger" class="text-12x has-error" *ngIf="onSolicitarForm.get('origen').touched && onSolicitarForm.get('origen').hasError('required')">El campo es requerido</p>
+        
+            <ion-item>
+                <ion-label floating class="text-white">
+                    <h2 class="text-white"> Destino</h2>
+                </ion-label>
+              <ion-input type="text" formControlName="destino"></ion-input>
+            </ion-item>
+            <p ion-text color="danger" class="text-12x has-error" *ngIf="onSolicitarForm.get('destino').touched && onSolicitarForm.get('destino').hasError('required')">El campo es requerido</p>
+            <ion-row>
+                <ion-col width-50> 
+                <ion-item>
+                  <ion-label color="dark" stack>
+                    <ion-icon name="md-calendar" item-start>  Fecha:</ion-icon>
+                  </ion-label>
+                  <ion-datetime min = {{this.myDate}}  max="2120-10-31" placeholder = "Salida" displayFormat="MM/DD/YYYY H:m" formControlName="fecha_hora"></ion-datetime>
+                </ion-item>
+                <p ion-text color="danger" class="text-12x has-error" *ngIf="onSolicitarForm.get('fecha_hora').touched && onSolicitarForm.get('fecha_hora').hasError('required')">El campo es requerido</p>
+                </ion-col>
+            </ion-row>
+                <ion-col width-50>
+                    <ion-item>
+                        <ion-label >
+                              <ion-icon name="ios-cash-outline" class="text-white"></ion-icon>
+                        </ion-label>
+                        <ion-input type="number" formControlName="precio_unitario" placeholder = "Precio Propuesto" ></ion-input>
+                    </ion-item>
+                    <p ion-text color="danger" class="text-12x has-error" *ngIf="onSolicitarForm.get('precio_unitario').touched && onSolicitarForm.get('precio_unitario').hasError('required')">El campo es requerido</p>
+                </ion-col>
+                <ion-col width-50>
+                    <ion-item>
+                        <ion-label >
+                              <ion-icon name="md-person" class="text-white"></ion-icon>
+                        </ion-label>
+                          <ion-input type="number" formControlName="puestos" placeholder = "Asientos que Solicita" ></ion-input>
+                    </ion-item>
+                    <p ion-text color="danger" class="text-12x has-error" *ngIf="onSolicitarForm.get('puestos').touched && onSolicitarForm.get('puestos').hasError('required')">El campo es requerido</p>
+                  </ion-col>
+								</form>
+      </div>
+
+      <div id="OfrecerForm" *ngSwitchCase="'ofrecer'">
+          <form [formGroup]="onOfrecerForm" class="list-form">
+              <ion-item>
+                  <ion-label floating class="text-white">
+                      <h2 class="text-white"> Origen</h2>
+                  </ion-label>
+                <ion-input type="text" formControlName="origen"></ion-input>
+              </ion-item>
+              <p ion-text color="danger" class="text-12x has-error" *ngIf="onOfrecerForm.get('origen').touched && onOfrecerForm.get('origen').hasError('required')">El campo es requerido</p>
+          
+              <ion-item>
+                  <ion-label floating class="text-white">
+                      <h2 class="text-white"> Destino</h2>
+                  </ion-label>
+                <ion-input type="text" formControlName="destino"></ion-input>
+              </ion-item>
+              <p ion-text color="danger" class="text-12x has-error" *ngIf="onOfrecerForm.get('destino').touched && onOfrecerForm.get('destino').hasError('required')">El campo es requerido</p>
+              <ion-row>
+                  <ion-col width-50> 
+                  <ion-item>
+                    <ion-label color="dark" stack>
+                      <ion-icon name="md-calendar" item-start>  Fecha:</ion-icon>
+                    </ion-label>
+                    <ion-datetime min = {{this.myDate}}  max="2120-10-31" placeholder = "Salida" displayFormat="MM/DD/YYYY H:m" formControlName="fecha_hora"></ion-datetime>
+                  </ion-item>
+                  <p ion-text color="danger" class="text-12x has-error" *ngIf="onOfrecerForm.get('fecha_hora').touched && onOfrecerForm.get('fecha_hora').hasError('required')">El campo es requerido</p>
+                  </ion-col>
+              </ion-row>
+                  <ion-col width-50>
+                      <ion-item>
+                          <ion-label >
+                                <ion-icon name="ios-cash-outline" class="text-white"></ion-icon>
+                          </ion-label>
+                          <ion-input type="number" formControlName="precio_unitario" placeholder = "Precio Fijo" ></ion-input>
+                      </ion-item>
+                      <p ion-text color="danger" class="text-12x has-error" *ngIf="onOfrecerForm.get('precio_unitario').touched && onOfrecerForm.get('precio_unitario').hasError('required')">El campo es requerido</p>
+                  </ion-col>
+                  <ion-col width-50>
+                      <ion-item>
+                          <ion-label >
+                                <ion-icon name="md-person" class="text-white"></ion-icon>
+                          </ion-label>
+                            <ion-input type="number" formControlName="puestos" placeholder = "Asientos Disponibles" ></ion-input>
+                      </ion-item>
+                      <p ion-text color="danger" class="text-12x has-error" *ngIf="onOfrecerForm.get('puestos').touched && onOfrecerorm.get('puestos').hasError('required')">El campo es requerido</p>
+                    </ion-col>
+                  </form>
+        </div>
+  </div>
+
+</ion-content>
